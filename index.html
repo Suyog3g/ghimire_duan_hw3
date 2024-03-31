@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, width=device-width">
+    <title>Nearby Restaurants</title>
+    <!-- Include Vue.js library -->
+    <script src="https://unpkg.com/vue@3"></script>
+    <!-- Include custom CSS -->
+    <link href="css/grid.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <!-- Include your custom JavaScript file -->
+    <script type="module" src="js/main.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>Star Wars Characters</h1>
+        <ul>
+            <li v-for="character in characters" :key="character.name" @click="getCharacterDetails(character.url)">
+                {{ character.name }}
+            </li>
+        </ul>
+        <div v-if="selectedCharacter">
+            <h2>{{ selectedCharacter.name }}</h2>
+            <p>{{ selectedCharacter.gender }}</p>
+            <!-- Add more details as needed -->
+        </div>
+        <div v-if="loading">Loading...</div>
+        <div v-if="error">{{ error }}</div>
+    </div>
+</body>
+</html>
