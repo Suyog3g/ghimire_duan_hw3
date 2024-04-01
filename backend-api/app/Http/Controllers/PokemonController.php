@@ -76,11 +76,12 @@ class PokemonController extends Controller {
         ]);
 
         // Update the Pokémon
-        $pokemon->name = $request->name;
-        $pokemon->weight = $request->weight;
-        $pokemon->height = $request->height;
-        $pokemon->abilities = $request->abilities;
-        $pokemon->save();
+        $pokemon->update([
+            'name' => $request->name,
+            'weight' => $request->weight,
+            'height' => $request->height,
+            'abilities' => $request->abilities,
+        ]);
 
         return response()->json($pokemon);
     }
