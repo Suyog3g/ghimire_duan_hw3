@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0, width=device-width">
     <title>Pokémon Characters</title>
-    <!-- Include Vue.js library -->
     <script src="https://unpkg.com/vue@3"></script>
     <!-- Include custom CSS -->
     <link href="css/grid.css" rel="stylesheet">
@@ -16,21 +15,19 @@
 
 <body>
     <div id="app">
-        <h1>Pokémon Characters</h1>
-        <ul>
-            <li v-for="pokemon in pokemons" :key="pokemon.name" @click="getPokemonDetails(pokemon.url)">
-                {{ pokemon.name }}
-            </li>
-        </ul>
-        <div v-if="selectedPokemon">
-            <h2>{{ selectedPokemon.name }}</h2>
-            <p>Weight: {{ selectedPokemon.weight }}</p>
-            <p>Height: {{ selectedPokemon.height }}</p>
-            <p>Abilities: {{ selectedPokemon.abilities }}</p>
-            <!-- Add more details as needed -->
-        </div>
+        <h1>Pokemons Listing</h1>
         <div v-if="loading">Loading...</div>
-        <div v-if="error">{{ error }}</div>
+        <div v-else>
+            <div v-for="pokemon in sortedPokemons" :key="pokemon.id">
+                <h2 @click="showPokemonDetails(pokemon.name)">{{ pokemon.name }}</h2>
+                <div v-if="pokemon.details">
+                    <img :src="pokemon.details.sprites.front_default" width="100" height="100">
+                    <p>Weight: {{ pokemon.details.weight }}</p>
+                    <p>Height: {{ pokemon.details.height }}</p>
+                    <p>Abilities: {{ pokemon.details.abilities }}</p>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 

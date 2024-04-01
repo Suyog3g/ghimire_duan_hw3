@@ -19,8 +19,8 @@ class PokemonController extends Controller {
     }
 
     public function getOne($id) {
-        $pokemon = Pokemon::find($id);
-        return response()->json($pokemon);
+        $pokemons = Pokemon::find($id);
+        return response()->json($pokemons);
     }
 
     public function save(Request $request) {
@@ -30,12 +30,12 @@ class PokemonController extends Controller {
            'height' => 'required',
            'abilities' => 'required'
        ]);
-       $pokemon = Pokemon::create($request->all());
-       return response()->json($pokemon, 201);
+       $pokemons = Pokemon::create($request->all());
+       return response()->json($pokemons, 201);
    }
 
    public function update(Request $request, $id) {
-    $pokemon = Pokemon::findOrFail($id);
+    $pokemons = Pokemon::findOrFail($id);
 
     $this->validate($request, [
         'name' => 'required',
@@ -43,13 +43,13 @@ class PokemonController extends Controller {
         'height' => 'required',
         'abilities' => 'required'
     ]);
-    $pokemon->update($request->all());
-    return response()->json($pokemon);
+    $pokemons->update($request->all());
+    return response()->json($pokemons);
     }
 
     public function delete($id) {
-        $pokemon = Pokemon::findOrFail($id);
-        $pokemon->delete();
+        $pokemons = Pokemon::findOrFail($id);
+        $pokemons->delete();
         return response()->json(null, 204);
     }
 }
