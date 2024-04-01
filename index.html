@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0, width=device-width">
-    <title>Nearby Restaurants</title>
+    <title>Pokémon Characters</title>
     <!-- Include Vue.js library -->
     <script src="https://unpkg.com/vue@3"></script>
     <!-- Include custom CSS -->
@@ -15,19 +16,22 @@
 
 <body>
     <div id="app">
-        <h1>Star Wars Characters</h1>
+        <h1>Pokémon Characters</h1>
         <ul>
-            <li v-for="character in characters" :key="character.name" @click="getCharacterDetails(character.url)">
-                {{ character.name }}
+            <li v-for="pokemon in pokemons" :key="pokemon.name" @click="getPokemonDetails(pokemon.url)">
+                {{ pokemon.name }}
             </li>
         </ul>
-        <div v-if="selectedCharacter">
-            <h2>{{ selectedCharacter.name }}</h2>
-            <p>{{ selectedCharacter.gender }}</p>
+        <div v-if="selectedPokemon">
+            <h2>{{ selectedPokemon.name }}</h2>
+            <p>Weight: {{ selectedPokemon.weight }}</p>
+            <p>Height: {{ selectedPokemon.height }}</p>
+            <p>Abilities: {{ selectedPokemon.abilities }}</p>
             <!-- Add more details as needed -->
         </div>
         <div v-if="loading">Loading...</div>
         <div v-if="error">{{ error }}</div>
     </div>
 </body>
+
 </html>
