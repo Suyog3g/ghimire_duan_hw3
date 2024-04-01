@@ -13,7 +13,7 @@ const app = Vue.createApp({
     methods: {
         fetchPokemons() {
             this.loading = true;
-            fetch('')
+            fetch('http://localhost:8888/ghimire_duan_hw3/backend-api/public/pokemons')
                 .then(response => response.json())
                 .then(data => {
                     this.pokemons = data.results;
