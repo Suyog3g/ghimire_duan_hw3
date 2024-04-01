@@ -1,44 +1,51 @@
 const app = Vue.createApp({
     data() {
         return {
-            characters: [],
-            selectedCharacter: null,
+            pokemons: [],
+            selectedPokemon: null,
             loading: false,
             error: null
         };
     },
     created() {
-        this.fetchCharacters();
+        this.fetchPokemons();
     },
     methods: {
-        fetchCharacters() {
+        fetchPokemons() {
             this.loading = true;
-            fetch('https://swapi.dev/api/people/')
+            fetch('')
                 .then(response => response.json())
                 .then(data => {
-                    this.characters = data.results;
+                    this.pokemons = data.results;
                     this.loading = false;
                 })
                 .catch(error => {
-                    this.error = 'Failed to fetch characters';
+                    this.error = 'Failed to fetch Pokémon';
                     this.loading = false;
-                    console.error('Error fetching characters:', error);
+                    console.error('Error fetching Pokémon:', error);
                 });
         },
-        getCharacterDetails(url) {
+        getPokemonDetails(url) {
             this.loading = true;
-            fetch(url)
+            fetch('https://pokeapi.co/api/v2/pokemon/')
                 .then(response => response.json())
                 .then(data => {
-                    this.selectedCharacter = data;
+                    this.selectedPokemon = {
+                        name: data.name,
+                        weight: data.weight,
+                        height: data.height,
+                        abilities: data.abilities.map(ability => ability.ability.name).join(', ')
+                        // Add more properties as needed
+                    };
                     this.loading = false;
                 })
                 .catch(error => {
-                    this.error = 'Failed to fetch character details';
+                    this.error = 'Failed to fetch Pokémon details';
                     this.loading = false;
-                    console.error('Error fetching character details:', error);
+                    console.error('Error fetching Pokémon details:', error);
                 });
         }
+        
     }
 });
 
