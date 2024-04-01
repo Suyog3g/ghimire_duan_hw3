@@ -13,7 +13,7 @@ const app = Vue.createApp({
     methods: {
         fetchPokemons() {
             this.loading = true;
-            fetch('https://pokeapi.co/api/v2/pokemon/')
+            fetch('')
                 .then(response => response.json())
                 .then(data => {
                     this.pokemons = data.results;
@@ -27,7 +27,7 @@ const app = Vue.createApp({
         },
         getPokemonDetails(url) {
             this.loading = true;
-            fetch(url)
+            fetch('https://pokeapi.co/api/v2/pokemon/')
                 .then(response => response.json())
                 .then(data => {
                     this.selectedPokemon = {

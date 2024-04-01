@@ -1,4 +1,5 @@
 <?php
+
 /** @var \Laravel\Lumen\Routing\Router $router */
 
 /*
@@ -16,8 +17,8 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->get('/pokemon', 'PokemonController@getAll');
-$router->get('/pokemon/{id}', 'PokemonController@getOne');
-$router->post('/pokemon/add', 'PokemonController@save');
-$router->put('/pokemon/edit/{id}', 'PokemonController@update');
-$router->delete('/pokemon/delete/{id}', 'PokemonController@delete');
+$router->get('/pokemons', 'PokemonController@getAll');
+$router->get('/pokemons/{id}', 'PokemonController@getOne');
+$router->post('/pokemons/add', 'PokemonController@save');
+$router->post('/pokemons/edit/{id}', 'PokemonController@update');
+$router->delete('/pokemons/delete/{id}', 'PokemonController@delete');
